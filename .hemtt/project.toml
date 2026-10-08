@@ -1,0 +1,25 @@
+name = "SPRES"
+author = "snakebyte"
+prefix = "SPRES"
+mainprefix = "z"
+
+[version]
+git_hash=0
+
+# Launched with `hemtt launch`
+[hemtt.launch.default]
+workshop = [
+    "450814997",  # CBA_A3's Workshop ID
+    "623475643",  # 3den enhanced
+    "1779063631", # Zeus enhanced
+]
+
+mission = "testRespawn.Stratis" # Mission to launch directly into the editor with
+parameters = [
+    "-skipIntro",           # These parameters are passed to the Arma 3 executable
+    "-noSplash",            # They do not need to be added to your list
+    "-showScriptErrors",    # You can add additional parameters here
+    "-debug",
+    "-filePatching",
+    "-noPause",
+]

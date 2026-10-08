@@ -1,0 +1,5 @@
+respawn="BASE";
+respawnTemplates[]={"MenuPosition"};
+respawnDelay=10;
+respawnDialog=1;
+respawnOnStart=-1;
