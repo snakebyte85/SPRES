@@ -1,14 +1,12 @@
  name 			= "SPRES (SinglePlayerRESpawn)";                     // Name of your mod
  author 		= "snakebyte" // Affects Arma 3 Launcher, when the mod are loaded as local
- //logo 			= "logo_ca.paa";                                // Logo displayed in the main menu
- //logoOver 		= "logo_ca.paa";                                // When the mouse is over, in the main menu
+ logo 			= "logo_ca_small.paa";                                // Logo displayed in the main menu
+ logoOver 		= "logo_ca_small.paa";                                // When the mouse is over, in the main menu
  tooltip 		= "SPRES (SinglePlayerRESpawn)";
- //tooltipOwned 	= "credit_mod";                             // Tool tip displayed when the mouse is left over, in the main menu
- //picture 		= "logo_ca.paa";                                // Picture displayed from the expansions menu. Optimal size is 2048x1024
  actionName 	= "Github";                                // Button-text
  action 		= "https://github.com/snakebyte85/SPRES"        // Website URL, that can be accessed from the expansions menu
  overview 		= "Single Player Respawn using multiplayer settings and features"; // Supports structured text
+ overviewPicture = "logo_ca.paa";
  hideName 		= 0;                                        // Hide the extension name
  hidePicture	= 0;	                                    // Hide the extension menu
  dlcColor[] 	= {0.23,0.39,0.30,1};                       // Color used for DLC stripes and backgrounds (RGBA)
-// logoSmall 		= "logo_ca.paa";                                // Display in creative lists, next to the entities added by the mod

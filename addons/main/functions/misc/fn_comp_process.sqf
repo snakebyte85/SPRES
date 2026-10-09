@@ -16,7 +16,7 @@ switch(true) do {
 
 if(!(_compScript isEqualType "")) then {
     _compScriptName = [true] call _compScript;
-    hint parseText format["<t size='2.0'>SPRES</t><t>Running compatibility module for mission %1</t>", _compScriptName];
+    hint parseText format["<t size='2.0'>SPRES</t><br/><br/><t>Running compatibility module for mission %1</t>", _compScriptName];
     [false] call _compScript;
 } else {
     format ["Can't find compatibility module for mission %1", _missionName] call SPRES_fnc_debug;
