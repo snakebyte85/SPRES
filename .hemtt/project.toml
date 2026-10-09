@@ -3,9 +3,6 @@ author = "snakebyte"
 prefix = "SPRES"
 mainprefix = "z"
 
-[version]
-git_hash=0
-
 # Launched with `hemtt launch`
 [hemtt.launch.default]
 workshop = [

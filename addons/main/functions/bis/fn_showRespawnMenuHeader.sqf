@@ -136,11 +136,28 @@ if (!_terminate) then {
 		_ctrlHeaderButton ctrlEnable true;
 
 		_noRespawnPositions = false;
+                
+        _ctrlHeaderButton ctrlAddEventhandler ["ButtonDown",{		//header respawn button used, store current selections and respawn player
+
+            format ["Respawn button down with location list box %1 and location selected %2",
+            uiNamespace getVariable ["BIS_RscRespawnControlsMap_ctrlLocList", controlNull],
+            lbCurSel (uiNamespace getVariable ["BIS_RscRespawnControlsMap_ctrlLocList", controlNull])] call SPRES_fnc_debug;
+
+			uiNamespace setVariable ["BIS_RscRespawnControls_selected",[lbCurSel (uiNamespace getVariable "BIS_RscRespawnControlsMap_ctrlLocList"),lbCurSel (uiNamespace getVariable "BIS_RscRespawnControlsMap_ctrlRoleList"),lbCurSel (uiNamespace getVariable "BIS_RscRespawnControlsMap_ctrlComboLoadout")]];
+			if (lbCurSel (uiNamespace getVariable ["BIS_RscRespawnControlsMap_ctrlLocList", controlNull]) >= 0) then {
+                missionNamespace setVariable ["BIS_RscRespawnControlsMap_shown", true];                
+                missionNamespace setVariable ["SPRES_playerRespawnTime",0];
+            };
+        }];
+        
+        _prt = (99999 max (missionNamespace getVariable ["SPRES_playerRespawnTime",""]));
+         missionNamespace setVariable ["SPRES_playerRespawnTime",_prt];
+        
 		while {!(missionNamespace getVariable ["SPRES_playerAlive",""]) && !_terminate} do {
 			//--- Update code
 			if (time > _timeUpdate) then {call _fnc_info};
 
-			_respawnDisabled = (missionNamespace getVariable ["SPRES_playerRespawnTime",""]) > 99999 || _noRespawnPositions;
+			_respawnDisabled =  _noRespawnPositions;
 			_text = if (_respawnDisabled) then {missionNamespace getVariable ["BIS_fnc_respawnMenuPosition_text", _textDisabled]} else {_textDefault};
 			_ctrlCounter ctrlShow false;
 			_ctrlCounterText ctrlShow false;
@@ -149,8 +166,6 @@ if (!_terminate) then {
 			_ctrlHeaderButton ctrlEnable !_respawnDisabled;
 			_ctrlHeaderButton ctrlsettext _text;
 
-			_prt = (99999 max (missionNamespace getVariable ["SPRES_playerRespawnTime",""]));
-            missionNamespace setVariable ["SPRES_playerRespawnTime",_prt];
 			sleep 0.05;
 			_terminate = !(_uiState isEqualTo [missionNamespace getVariable ["BIS_RscRespawnControlsMap_shown", false], missionNamespace getVariable ["BIS_RscRespawnControlsSpectate_shown", false]]);
 		};

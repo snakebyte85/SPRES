@@ -110,7 +110,7 @@ if (_isDeath && {SPRES_playerAlive} && {!unitIsUAV cameraOn}) then {
 			player setpos [10,10,10];
 			player hideobject true;
 			player enablesimulation false;
-			forcerespawn player;
+			[] spawn SPRES_forcePlayerRespawn;
 		};
 	} else {
 		if (isnil "_respawnOnStart") then {_respawnOnStart = 0;};

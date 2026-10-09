@@ -27,11 +27,18 @@ class CfgFunctions {
             class showRespawnMenuHeader {};
             class selectRespawnTemplate {};
             class respawnCounter {};
+            class respawnMenuInventory {};
+            class respawnTickets {};
+            class respawnEndMission {};
         };
         
         class misc {
             file = QUOTE(BASE_PATH_FN\misc);
             class debug {};
+            
+            class comp_process {};
+            class comp_DUWS_T_1_6 {};
+            class comp_DUWS_T_2_0 {};
         };
     };
 };
@@ -39,6 +46,12 @@ class CfgFunctions {
 class Extended_PostInit_EventHandlers {
     class ADDON {
         init = QUOTE(call COMPILE_FILE(XEH_postInit));
+    };
+};
+
+class Extended_PreInit_EventHandlers {
+    class SPRES_pre_init {
+        init = QUOTE(call COMPILE_FILE(XEH_preInit));
     };
 };
 
@@ -50,9 +63,27 @@ class CfgRespawnTemplates {
         onPlayerRespawnSPRES="SPRES_fnc_respawnMenuPosition";
     };
     
+    class MenuInventory {
+        onPlayerKilledSPRES="SPRES_fnc_respawnMenuInventory";
+        onPlayerRespawnSPRES="SPRES_fnc_respawnMenuInventory";
+    };
+    
     class Counter {
         onPlayerKilledSPRES="SPRES_fnc_respawnCounter";
         onPlayerRespawnSPRES="SPRES_fnc_respawnCounter";        
+    };
+    
+    class EndMission {
+        onPlayerKilledSPRES="SPRES_fnc_respawnEndMission";
+        onPlayerRespawnSPRES="SPRES_fnc_respawnEndMission";        
+    };
+    
+    class Tickets {
+        onPlayerKilledSPRES="SPRES_fnc_respawnTickets";      
+    };
+    
+    class TicketsSpawn {
+        onPlayerRespawnSPRES="SPRES_fnc_respawnTickets";        
     };
     
    
@@ -77,3 +108,5 @@ class RscTitles {
     };
 
 };
+
+
